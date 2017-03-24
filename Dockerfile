@@ -1,7 +1,7 @@
 FROM frolvlad/alpine-glibc
 
-ENV OC_VERSION=v1.3.0 \
-    OC_HASH=3ab7af3d097b57f933eccef684a714f2368804e7
+ENV OC_VERSION=v1.4.1 \
+    OC_HASH=3f9807a
 
 RUN apk add --no-cache curl
 
