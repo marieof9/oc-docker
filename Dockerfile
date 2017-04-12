@@ -5,9 +5,6 @@ ENV OC_VERSION=v1.4.1 \
 
 RUN apk add --no-cache curl git
 
-RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases/download/1.0.0-RC1/ep-linux && \ 
-    chmod +x /usr/local/bin/ep
-
 RUN mkdir -p /openshift-origin-client-tools && \
     curl -L https://github.com/openshift/origin/releases/download/${OC_VERSION}/openshift-origin-client-tools-${OC_VERSION}-${OC_HASH}-linux-64bit.tar.gz \
       | tar xzC /openshift-origin-client-tools --strip-components=1 && \
@@ -15,12 +12,9 @@ RUN mkdir -p /openshift-origin-client-tools && \
 
 COPY container-entrypoint /usr/sbin/container-entrypoint
 
-WORKDIR /home/ocuser
-ENV KUBECONFIG /home/ocuser/.kubeconfig
-
-RUN /usr/sbin/adduser -D -u 1234 ocuser
-
-USER 1234
+RUN mkdir -m 770 -p /oc2/.kubeconfig
+WORKDIR /oc2
+ENV KUBECONFIG /oc2/.kubeconfig
 
 ENTRYPOINT ["container-entrypoint"]
 CMD ["YOLO"]
