@@ -2,4 +2,10 @@
 
 ep  /openshift/.kubeconfig
 
+if "$@" = "/bin/sh"; then
+  while true; do
+    sleep 10;
+    date;
+  done
+fi
 exec "$@"
