@@ -3,7 +3,7 @@ FROM frolvlad/alpine-glibc
 ENV OC_VERSION=v1.4.1 \
     OC_HASH=3f9807a
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl git
 
 RUN curl -sLo /usr/local/bin/ep https://github.com/kreuzwerker/envplate/releases/download/1.0.0-RC1/ep-linux && \ 
     chmod +x /usr/local/bin/ep
@@ -19,7 +19,7 @@ COPY .kubeconfig /openshift/.kubeconfig
 
 COPY container-entrypoint /usr/sbin/container-entrypoint
 
-WORKDIR /openshift
+WORKDIR /home/ocuser
 
 ENV KUBECONFIG .kubeconfig
 
