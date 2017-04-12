@@ -20,8 +20,6 @@ ENV KUBECONFIG /home/ocuser/.kubeconfig
 
 RUN /usr/sbin/adduser -D -u 1234 ocuser
 
-RUN mkdir 
-
 USER 1234
 
 ENTRYPOINT ["container-entrypoint"]
