@@ -13,18 +13,13 @@ RUN mkdir -p /openshift-origin-client-tools && \
       | tar xzC /openshift-origin-client-tools --strip-components=1 && \
     install /openshift-origin-client-tools/oc /usr/bin/oc && rm -rf openshift-origin-client-tools
 
-RUN mkdir -p /openshift
-
-COPY .kubeconfig /openshift/.kubeconfig
-
 COPY container-entrypoint /usr/sbin/container-entrypoint
 
 WORKDIR /home/ocuser
-
-ENV KUBECONFIG .kubeconfig
 
 RUN /usr/sbin/adduser -D ocuser
 
 USER ocuser
 
-CMD /bin/sh
+ENTRYPOINT ["container-entrypoint"]
+CMD ["YOLO"]

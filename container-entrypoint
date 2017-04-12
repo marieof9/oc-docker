@@ -1,11 +1,9 @@
 #!/bin/sh
 
-ep  /openshift/.kubeconfig
-
-if "$@" = "/bin/sh"; then
+if [ "$@" = "YOLO" ]; then
   while true; do
-    sleep 10;
     date;
+    sleep 10;
   done
 fi
 exec "$@"
