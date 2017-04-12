@@ -23,4 +23,9 @@ WORKDIR /openshift
 
 ENV KUBECONFIG .kubeconfig
 
+RUN useradd -m ocuser
+
+USER ocuser
+
 ENTRYPOINT ["container-entrypoint"]
+RUN /usr/bin/sh
