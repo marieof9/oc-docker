@@ -16,10 +16,13 @@ RUN mkdir -p /openshift-origin-client-tools && \
 COPY container-entrypoint /usr/sbin/container-entrypoint
 
 WORKDIR /home/ocuser
+ENV KUBECONFIG /home/ocuser/.kubeconfig
 
-RUN /usr/sbin/adduser -D ocuser
+RUN /usr/sbin/adduser -D -u 1234 ocuser
 
-USER ocuser
+RUN mkdir 
+
+USER 1234
 
 ENTRYPOINT ["container-entrypoint"]
 CMD ["YOLO"]
