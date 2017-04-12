@@ -12,9 +12,9 @@ RUN mkdir -p /openshift-origin-client-tools && \
 
 COPY container-entrypoint /usr/sbin/container-entrypoint
 
-RUN mkdir -m 770 -p /oc2/.kubeconfig
+RUN mkdir -m 770 -p /oc2/.kube
 WORKDIR /oc2
-ENV KUBECONFIG /oc2/.kubeconfig
+ENV KUBECONFIG /oc2/.kube/config
 
 ENTRYPOINT ["container-entrypoint"]
 CMD ["YOLO"]
